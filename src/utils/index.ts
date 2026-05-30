@@ -25,11 +25,18 @@ export const sortTasksByPriority = (tasks: Task[]): Task[] => {
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const formatDueDate = (date: Date | undefined): string => {
-  return new Date(date as Date).toLocaleDateString('en-US', {
-    day: '2-digit',
-    month: 'short',
-    year: 'numeric',
-  })
+  if (!date) return 'No due date'
+  try {
+    const d = new Date(date)
+    if (isNaN(d.getTime())) return 'No due date'
+    return d.toLocaleDateString('en-US', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+    })
+  } catch {
+    return 'No due date'
+  }
 }
 
 export const isOverdue = (date: Date | undefined): boolean => {
