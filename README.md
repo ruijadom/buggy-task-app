@@ -1,4 +1,4 @@
-# Broadvoice Bugfix Agent
+# Bugfix Agent
 
 An autonomous multi-agent pipeline that reads a Jira bug ticket, writes a fix, opens a Pull Request on Bitbucket, validates the build via Codefresh, and posts a code review — all without human involvement until the final approval step.
 
