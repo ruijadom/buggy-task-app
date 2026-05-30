@@ -14,7 +14,7 @@ const PRIORITY_ORDER: Record<Priority, number> = {
 }
 
 export const sortTasksByPriority = (tasks: Task[]): Task[] => {
-  return tasks.sort((a, b) => PRIORITY_ORDER[a.priority] - PRIORITY_ORDER[b.priority])
+  return [...tasks].sort((a, b) => PRIORITY_ORDER[a.priority] - PRIORITY_ORDER[b.priority])
 }
 
 // ─── BUG #2 ──────────────────────────────────────────────────────────────────
