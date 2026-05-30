@@ -22,7 +22,6 @@ export const AddTaskModal = ({ onAdd, onClose }: AddTaskModalProps) => {
   const [tagsInput, setTagsInput] = useState('')
   const [error, setError] = useState('')
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const resetForm = () => {
     setTitle('')
     setDescription('')
@@ -53,7 +52,7 @@ export const AddTaskModal = ({ onAdd, onClose }: AddTaskModalProps) => {
       tags,
     })
 
-    // BUG #6: resetForm() is never called here — state persists after submit
+    resetForm()
     onClose()
   }
 
