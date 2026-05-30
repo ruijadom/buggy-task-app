@@ -95,7 +95,7 @@ export const useTasks = () => {
   // BUG #3: Missing `tasks` dependency — localStorage never updates after mount
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks))
-  }, []) // ← should be [tasks]
+  }, [tasks])
 
   const addTask = useCallback((data: Omit<Task, 'id' | 'createdAt'>) => {
     const newTask: Task = {
