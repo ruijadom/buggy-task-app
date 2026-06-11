@@ -1,12 +1,5 @@
 import type { Task, Priority } from '../types'
 
-// ─── BUG #1 ──────────────────────────────────────────────────────────────────
-// sortTasksByPriority mutates the original array instead of sorting a copy.
-// Calling this function changes the order of the original tasks array in state,
-// causing unpredictable re-renders and lost order when filters are cleared.
-// Fix: use [...tasks].sort(...) instead of tasks.sort(...)
-// ─────────────────────────────────────────────────────────────────────────────
-
 const PRIORITY_ORDER: Record<Priority, number> = {
   high: 0,
   medium: 1,
@@ -14,7 +7,7 @@ const PRIORITY_ORDER: Record<Priority, number> = {
 }
 
 export const sortTasksByPriority = (tasks: Task[]): Task[] => {
-  return tasks.sort((a, b) => PRIORITY_ORDER[a.priority] - PRIORITY_ORDER[b.priority])
+  return [...tasks].sort((a, b) => PRIORITY_ORDER[a.priority] - PRIORITY_ORDER[b.priority])
 }
 
 // ─── BUG #2 ──────────────────────────────────────────────────────────────────
