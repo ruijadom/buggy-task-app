@@ -65,13 +65,6 @@ const INITIAL_TASKS: Task[] = [
   },
 ]
 
-// ─── BUG #3 ──────────────────────────────────────────────────────────────────
-// The useEffect that persists tasks to localStorage is missing `tasks` in its
-// dependency array. This means localStorage is NEVER updated after the initial
-// render — changes made by the user (add/delete/update) are lost on page reload.
-// Fix: change the dependency array from [] to [tasks].
-// ─────────────────────────────────────────────────────────────────────────────
-
 export const useTasks = () => {
   const [tasks, setTasks] = useState<Task[]>(() => {
     try {
@@ -92,10 +85,9 @@ export const useTasks = () => {
     status: 'all',
   })
 
-  // BUG #3: Missing `tasks` dependency — localStorage never updates after mount
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks))
-  }, []) // ← should be [tasks]
+  }, [tasks])
 
   const addTask = useCallback((data: Omit<Task, 'id' | 'createdAt'>) => {
     const newTask: Task = {
