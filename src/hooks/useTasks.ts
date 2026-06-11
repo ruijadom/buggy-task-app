@@ -121,7 +121,7 @@ export const useTasks = () => {
   // ──────────────────────────────────────────────────────────────────────────
 
   const filteredTasks = tasks.filter(task => {
-    const matchesSearch = filters.search === '' || task.title.includes(filters.search) // BUG #4
+    const matchesSearch = filters.search === '' || task.title.toLowerCase().includes(filters.search.toLowerCase())
     const matchesPriority = filters.priority === 'all' || task.priority === filters.priority
     const matchesStatus = filters.status === 'all' || task.status === filters.status
     return matchesSearch && matchesPriority && matchesStatus
