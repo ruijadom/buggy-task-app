@@ -25,7 +25,10 @@ export const sortTasksByPriority = (tasks: Task[]): Task[] => {
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const formatDueDate = (date: Date | undefined): string => {
-  return new Date(date as Date).toLocaleDateString('en-US', {
+  if (!date) return 'No due date'
+  const parsed = new Date(date)
+  if (isNaN(parsed.getTime())) return 'No due date'
+  return parsed.toLocaleDateString('en-US', {
     day: '2-digit',
     month: 'short',
     year: 'numeric',
