@@ -7,15 +7,8 @@ interface TaskCardProps {
   onDelete: (id: string) => void
 }
 
-// ─── BUG #5 ──────────────────────────────────────────────────────────────────
-// cycleStatus skips 'in-progress' — clicking "advance" goes directly from
-// 'todo' to 'done', never passing through 'in-progress'. The STATUS_CYCLE
-// map has a typo: 'todo' maps to 'done' instead of 'in-progress'.
-// Fix: change 'todo': 'done' to 'todo': 'in-progress'
-// ─────────────────────────────────────────────────────────────────────────────
-
 const STATUS_CYCLE = {
-  'todo': 'done',        // BUG #5 — should be 'in-progress'
+  'todo': 'in-progress',
   'in-progress': 'done',
   'done': 'todo',
 } as const
