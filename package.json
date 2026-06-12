@@ -7,9 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "qa:screenshot": "node scripts/qa-screenshot.mjs",
-    "qa:evidence": "node scripts/qa-screenshot.mjs && bash scripts/post-pr-evidence.sh"
+    "preview": "vite preview"
   },
   "dependencies": {
     "react": "^19.2.6",
@@ -17,7 +15,6 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@playwright/test": "^1.60.0",
     "@tailwindcss/vite": "^4.3.0",
     "@types/node": "^24.12.3",
     "@types/react": "^19.2.14",

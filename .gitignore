@@ -12,11 +12,6 @@ dist
 dist-ssr
 *.local
 
-# QA evidence — keep pngs and metadata in git (posted to PRs)
-# but don't track the directory itself as new
-playwright-report/
-test-results/
-
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
